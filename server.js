@@ -7,6 +7,7 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
+const Portfolio = require('./models/portfolio.js')
 //___________________
 //Port
 //___________________
@@ -49,14 +50,61 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 //localhost:3000
 
+//DELETE
+app.delete('/portfolio/:id', (req,res) => {
+  Portfolio.findByIdAndRemove(req.params.id, (err, data) =>{
+    res.redirect('/portfolio')
+  })
+})
+
+//POST
+app.post('/portfolio', (req,res)=> { //wha's the use of the scond parameter here?
+  Portfolio.create(req.body, (error, createdPortfolio) => {
+    res.redirect('/portfolio')
+  })
+})
+
+
 //INDEX ROUTE
-app.get('/portfolio' , (req, res) => {
+app.get('/portfolio', (req, res) => {
   Portfolio.find({}, (error, allProjects) => {
     res.render('index.ejs', {
-      projectlist: allProjects
-    }
+      projectList: allProjects
+    })
   })
 });
+
+//CREATE
+app.get('/portfolio/new', (req,res) => {
+  res.render('new.ejs')
+})
+
+
+
+//PUT
+app.put('/portfolio/:id', (req,res)=>{
+  Portfolio.findByIdAndUpdate(req.params.id, req.body, (err,updatedModel)=>{
+    res.redirect('/portfolio')
+  })
+})
+
+//SHOW
+app.get('/portfolio/:id', (req,res) => {
+  Portfolio.findById(req.params.id, (err, foundProjects) => {
+    res.render('show.ejs', {
+      project: foundProjects
+    })
+  })
+})
+
+//Edit
+app.get('/portfolio/:id/edit', (req,res) =>{
+  Portfolio.findById(req.params.id, (err, foundProject) => {
+    res.render('edit.ejs', {
+      project: foundProject
+    })
+  })
+})
 
 //___________________
 //Listener

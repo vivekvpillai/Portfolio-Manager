@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Edit Page</h1>
+    <form action="/portfolio/<%=project.id%>?_method=PUT" method="POST">
+      Name: <input type="text" name="projectName" value="<%=project.projectName%>"/><br/>
+      Description: <input type="text" name="description" value="<%=project.description%>" /><br/>
+      Image: <input type="text" name="previewImage" value="<%=project.previewImage%>" /><br/>
+      Date: <input type="text" name="date" value="<%=project.date%>" /><br/>
+      Github Link: <input type="githubLink" name="githubLink" value="<%=project.githubLink%>" /><br/>
+      <br/>
+      <input class="submission" type="submit" value="Submit Changes" />
+    </form>
+  </body>
+</html>

@@ -6,9 +6,23 @@
   </head>
   <body>
     <h1>Projects index page</h1>
-    <%JSON.stringify(projectlist)%>
-    <ul>
-
-    </ul>  
+    <div class="text">
+    <%JSON.stringify(projectList)%>
+      <br/>
+        <% for(let i=0; i< projectList.length; i++){ %>
+            <div class="card">
+              <img class="images" src="<%=projectList[i].previewImage%>"></img><br/>
+              <div class="name">
+              <a class="nameLink" href="/portfolio/<%=projectList[i].id%>">
+                <%=projectList[i].projectName %>
+              </a>
+              </div>
+            </div>
+            <br/>
+        <%  } %>
+    </div>
+    <br />
+    <nav>
+      <a class="new" href="/portfolio/new">Create a new product</a>
   </body>
 </html>
