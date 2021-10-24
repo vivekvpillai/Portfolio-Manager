@@ -1,0 +1,14 @@
+<a href="/portfolio" class="brand-logo left">Welcome</a>
+ <ul class="right">
+ <% if (currentUser) { %>
+    <h1>Welcome <%=currentUser.username%></h1>
+    <li>
+      <form action="/sessions?_method=DELETE" method="POST">
+        <input type="Submit" value="Log Out" />
+      </form>
+    </li>
+ <% } else { %>
+   <a href="/users/new"><button>Sign Up</button></a><br/>
+   <a href="/sessions/new"><button>Log In</button></a>
+ <% } %>
+</ul>

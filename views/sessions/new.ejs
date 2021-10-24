@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login<h1>
+        <form action="/sessions" method="POST">
+          <label for="name">User Name:</label>
+        <input type="text" name="username" required/>
+        <label for="color">Password:</label>
+        <input type="password" name="password" />
+        <!-- Why don't we need value in these inputs? -->
+        <br/>
+        <input class="submission" type="submit" value="Submit">
+      </form>
+      <a href="/portfolio">Back to Main Page</a>
+  </body>
+</html>
