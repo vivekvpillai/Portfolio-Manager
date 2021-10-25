@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <h1>Applications index page</h1>
+    <h1>Applications Page</h1>
     <div class="text">
     <%JSON.stringify(applicationList)%>
       <br/>
@@ -13,7 +13,7 @@
             <div class="card">
               <img class="images" src="<%=applicationList[i].companyImage%>"></img><br/>
               <div class="name">
-              <a class="nameLink" href="/applications/<%=applicationList[i].id%>">
+              <a class="nameLink" href="/portfolio/applications/<%=applicationList[i].id%>">
                 <%=applicationList[i].position %>
               </a>
               </div>
@@ -23,6 +23,7 @@
     </div>
     <br />
     <nav>
-      <a class="new" href="/applications/new">Create a new product</a>
+      <a class="new" href="/portfolio/applications/new">Create a new application</a> <br/>
+      <a class="new" href="/portfolio">Back to Portfolio Manager</a>
   </body>
 </html>
