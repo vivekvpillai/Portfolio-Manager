@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Edit Page</h1>
+    <form action="/applications/<%=application.id%>?_method=PUT" method="POST">
+      Position: <input type="text" name="position" value="<%=application.position%>"/><br/>
+      Date: <input type="text" name="date" value="<%=application.date%>" /><br/>
+      Company Image: <input type="text" name="companyImage" value="<%=application.companyImage%>" /><br/>
+      Application Link: <input type="text" name="applicationLink" value="<%=application.applicationLink%>" /><br/>
+      Status: <input type="githubLink" name="status" value="<%=application.status%>" /><br/>
+      <br/>
+      <input class="submission" type="submit" value="Submit Changes" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <h1>Project Information</h1>
+      <%JSON.stringify(project)%>
+    <h2> Name: <%=project.position%></h2>
+    <h2> Date: <%project.date%></h2>
+    <div class="image">
+      <img class="imgs" src="<%=project.companyImage%>"></img>
+    </div>
+    <br/>
+    <p>Status: <%=project.status%></p><br/>
+    <a href="<%=applicationList[i].applicationLink%>">
+      <%=applicationList[i].position %>
+    </a>
+
+    <nav>
+      <a class="return" href="/applications">Back to my applications</a><br/>
+
+
+    </nav>
+
+  </body>
+</html>

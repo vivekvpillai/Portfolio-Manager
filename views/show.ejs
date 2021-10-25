@@ -19,10 +19,13 @@
     <nav>
       <a class="return" href="/portfolio">Back to my portfolio</a><br/>
 
+ <% if (currentUser) { %>
       <a class="editbutton" href="/portfolio/<%=project.id%>/edit"> <button class="editanddelete">Edit</button></a>
 
         <form action="/portfolio/<%=project.id%>?_method=DELETE" method="POST">
           <input type="submit" value="DELETE"/>
+
+  <% } %>
         </form>
     </nav>
 

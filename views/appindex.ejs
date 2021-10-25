@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Applications index page</h1>
+    <div class="text">
+    <%JSON.stringify(applicationList)%>
+      <br/>
+        <% for(let i=0; i< applicationList.length; i++){ %>
+            <div class="card">
+              <img class="images" src="<%=applicationList[i].companyImage%>"></img><br/>
+              <div class="name">
+              <a class="nameLink" href="/applications/<%=applicationList[i].id%>">
+                <%=applicationList[i].position %>
+              </a>
+              </div>
+            </div>
+            <br/>
+        <%  } %>
+    </div>
+    <br />
+    <nav>
+      <a class="new" href="/applications/new">Create a new product</a>
+  </body>
+</html>

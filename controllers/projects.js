@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router();
 const Portfolio = require('../models/portfolio.js')
+const Application = require('../models/applications.js')
+const User = require('../models/users.js')
 
 //___________________
 // Routes
@@ -34,11 +36,12 @@ router.get('/', (req, res) => {
 
 //CREATE
 router.get('/new', (req,res) => {
-  res.render('new.ejs', {
+  Portfolio.find({}, (err, allUsers)=>{
+            res.render('new.ejs', {
    currentUser: req.session.currentUser
+  })
  })
 })
-
 
 
 //PUT
@@ -63,6 +66,45 @@ router.get('/:id/edit', (req,res) =>{
   Portfolio.findById(req.params.id, (err, foundProject) => {
     res.render('edit.ejs', {
       project: foundProject,
+      currentUser: req.session.currentUser
+    })
+  })
+})
+
+////////////////////////////////////////
+/////////////////APPLICATIONS//////////////
+//Application Data Index
+router.get('/applications', (req, res) => {
+  Application.find({}, (error, allApplications) => {
+    res.render('appindex.ejs', {
+      applicationList: allApplications,
+      currentUser: req.session.currentUser
+    })
+  })
+});
+
+//Applications Show
+router.get('/applications/:id', (req,res) => {
+  Application.findById(req.params.id, (err, foundApplications) => {
+    res.render('appshow.ejs', {
+      application: foundApplications,
+      currentUser: req.session.currentUser
+    })
+  })
+})
+
+//Applications Create
+router.get('/applications/new', (req,res) => {
+  res.render('appnew.ejs', {
+   currentUser: req.session.currentUser
+ })
+})
+
+//Edit
+router.get('/applications/:id/edit', (req,res) =>{
+  Application.findById(req.params.id, (err, foundApplication) => {
+    res.render('appedit.ejs', {
+      application: foundApplication,
       currentUser: req.session.currentUser
     })
   })
