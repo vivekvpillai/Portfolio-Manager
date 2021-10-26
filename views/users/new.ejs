@@ -8,6 +8,7 @@
     <div class="container">
           <h1>New User</h1>
           <form action="/users" method="POST">
+            <input type="hidden" name="owner" value="<%currentUser.username">
             <label for="name">User Name:</label>
             <input type="text" name="username" required/>
             <label for="color">Password:</label>

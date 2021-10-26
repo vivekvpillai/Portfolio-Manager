@@ -1,3 +1,6 @@
+body{
+  font-family: 'Libre Baskerville', serif;
+}
 nav{
   background-color: #422894;
   color: white;
@@ -32,6 +35,9 @@ img{
       border-radius: 25px;
       padding: 20px;
     }
+.nameLink{
+  font-family: 'Libre Baskerville', serif;
+}
 .card:hover{
       box-shadow: 2px 2px
     }
