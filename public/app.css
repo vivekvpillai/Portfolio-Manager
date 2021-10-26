@@ -13,6 +13,13 @@ nav h1{
   color: white;
   text-align: right;
 }
+.lowNav{
+ text-align: center;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
 h1{
   color: #422894;
   font-family: 'Libre Baskerville', serif;
@@ -27,8 +34,8 @@ img{
       display: flex; flex-wrap: wrap; gap: 10px
     }
 .images{
-      max-width: 300px;
-      max-height: 400px
+      max-width: 550px;
+      max-height: 650px;
     }
 .card{
       border: 1px solid black;
@@ -41,3 +48,25 @@ img{
 .card:hover{
       box-shadow: 2px 2px
     }
+button{
+  background-color: #DFDAF1;
+  color: #422894;
+  font-family: 'Libre Baskerville', serif;
+}
+.login{
+  text-align: right
+}
+.brand-logo{
+ background-color: #DFDAF1;
+ color: #422894;
+ font-family: 'Ultra', serif;
+ font-size: 30px;
+ text-decoration: none;
+}
+.cardLink{
+  text-decoration: none;
+  text-align: center
+}
+.projTitle{
+  font-weight: bold
+}

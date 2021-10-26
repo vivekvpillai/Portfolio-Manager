@@ -1,6 +1,6 @@
-<a href="/portfolio" class="brand-logo left">Welcome</a>
+<a href="/portfolio" class="brand-logo left">Portfolio Manager</a>
  <ul class="right">
-   <li><a href="/portfolio/new">Create a new project</a></li>
+   <a href="/portfolio/new">Create a new project</a>
  <% if (currentUser) { %>
     <h1>Welcome <%=currentUser.username%></h1>
     <li>
@@ -9,7 +9,9 @@
       </form>
     </li>
  <% } else { %>
+   <div class="login">
    <a href="/users/new"><button>Sign Up</button></a><br/>
    <a href="/sessions/new"><button>Log In</button></a>
+   </div>
  <% } %>
 </ul>

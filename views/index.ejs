@@ -10,25 +10,27 @@
     <nav>
       <%- include ('../partials/welcome.ejs') %>
     </nav>
-    <h1>Portfolio Manager</h1>
+    <h1 class="projTitle">My Projects</h1>
     <div class="text">
     <%JSON.stringify(projectList)%>
       <br/>
         <% for(let i=0; i< projectList.length; i++){ %>
+          <a class="cardLink" href="/portfolio/<%=projectList[i].id%>">
             <div class="card">
               <img class="images" src="<%=projectList[i].previewImage%>"></img><br/>
               <div class="name">
-              <a class="nameLink" href="/portfolio/<%=projectList[i].id%>">
+              <h3 class="nameTitle">
                 <%=projectList[i].projectName %>
-              </a>
+              </h3>
               </div>
             </div>
+            </a>
             <br/>
         <%  } %>
     </div>
     <br />
-    <nav>
-      <a class="new" href="/portfolio/new">Create a new project</a> <br/>
+    <nav class="lowNav">
+      <a class="new" href="/portfolio/new">Create a new project</a>
       <a href="/portfolio/applications">View my applications</a>
   </body>
 </html>
