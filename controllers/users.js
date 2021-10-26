@@ -16,6 +16,12 @@ users.post('/', (req,res) => {
     })
 })
 
+// let User = {
+//   find: async (req, res) => {
+//
+//   }
+// }
+
 
 // users.get('/new', (req, res) =>{
 //

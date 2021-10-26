@@ -86,17 +86,19 @@ router.post('/', (req,res)=> { //wha's the use of the scond parameter here?
 
 //INDEX ROUTE
 router.get('/', (req, res) => {
-  Portfolio.find({}, (error, allProjects) => {
-    res.render('index.ejs', {
-      projectList: allProjects,
-      currentUser: req.session.currentUser
+  User.findById(req.params.id, (err, foundUser)=>{
+    Portfolio.find({}, (error, allProjects) => {
+      res.render('index.ejs', {
+        projectList: allProjects,
+        currentUser: req.session.currentUser
+      })
     })
   })
 });
 
 //CREATE
 router.get('/new', (req,res) => {
-  Portfolio.find({}, (err, allUsers)=>{
+  User.find({}, (err, allUsers)=>{
             res.render('new.ejs', {
    currentUser: req.session.currentUser
   })
@@ -113,10 +115,12 @@ router.put('/:id', (req,res)=>{
 
 //SHOW
 router.get('/:id', (req,res) => {
-  Portfolio.findById(req.params.id, (err, foundProjects) => {
-    res.render('show.ejs', {
-      project: foundProjects,
-      currentUser: req.session.currentUser
+  User.findById(req.params.id, (err, founduser)=>{
+    Portfolio.findById(req.params.id, (err, foundProjects) => {
+      res.render('show.ejs', {
+        project: foundProjects,
+        currentUser: req.session.currentUser
+      })
     })
   })
 })

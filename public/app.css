@@ -1,0 +1,37 @@
+nav{
+  background-color: #422894;
+  color: white;
+}
+nav a{
+  color: white;
+  text-align: right;
+}
+nav h1{
+  color: white;
+  text-align: right;
+}
+h1{
+  color: #422894;
+  font-family: 'Libre Baskerville', serif;
+  text-align: center;
+  font-weight: bolder;
+}
+img{
+  transform: scale(0.8)
+}
+
+.text {
+      display: flex; flex-wrap: wrap; gap: 10px
+    }
+.images{
+      max-width: 300px;
+      max-height: 400px
+    }
+.card{
+      border: 1px solid black;
+      border-radius: 25px;
+      padding: 20px;
+    }
+.card:hover{
+      box-shadow: 2px 2px
+    }
