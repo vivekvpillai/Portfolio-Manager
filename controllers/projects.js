@@ -124,7 +124,7 @@ router.post('/', (req,res)=> {
         console.log(data)
         console.log('wow')
         console.log(foundUser)
-        req.session.currentUser = data
+        req.session.currentUser = data //Sam taught me how to do this as well, which allowed the index page to refresh. 
         res.redirect('/portfolio')
       })
     })
@@ -135,7 +135,7 @@ router.post('/', (req,res)=> {
 //INDEX ROUTE
 router.get('/', (req, res) => {
   if (req.session.currentUser) {
-    User.findById(req.session.currentUser._id, (err, foundUser)=>{
+    User.findById(req.session.currentUser._id, (err, foundUser)=>{ //Sam taught me how to use req.session.currentUser._id for the one-to-many
       Portfolio.find({}, (error, allProjects) => {
         res.render('index.ejs', {
           currentUser: req.session.currentUser
