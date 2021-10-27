@@ -71,9 +71,12 @@ button{
   font-weight: bold
 }
 .logout{
+  text-align: right;
+  margin-right: 10px;
+  padding-bottom: 0.1px
+}
+.logoutbutton{
   background-color: #DFDAF1;
   color: #422894;
   font-family: 'Libre Baskerville', serif;
-  margin-left: 92.7%;
-  margin-bottom: 15px
 }

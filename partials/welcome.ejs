@@ -2,11 +2,13 @@
  <ul class="right">
  <% if (currentUser) { %>
     <h1>Welcome <%=currentUser.username%></h1>
+    <div class="logout">
     <p>
       <form action="/sessions?_method=DELETE" method="POST">
-        <input class="logout" type="Submit" value="Log Out" />
+        <input class="logoutbutton" type="Submit" value="Log Out" />
       </form>
     </p>
+    </div>
  <% } else { %>
    <div class="login">
    <a href="/users/new"><button>Sign Up</button></a><br/>
