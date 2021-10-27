@@ -49,6 +49,7 @@ router.put('/applications/:id', (req,res)=>{
       foundUser.applications.push(updatedModel);
       console.log(foundUser.applications)
       foundUser.save((err, data)=>{
+        req.session.currentUser = data
         res.redirect('/portfolio/applications/'+req.params.id)
       })
     })
@@ -137,7 +138,6 @@ router.get('/', (req, res) => {
     User.findById(req.session.currentUser._id, (err, foundUser)=>{
       Portfolio.find({}, (error, allProjects) => {
         res.render('index.ejs', {
-          projectList: allProjects,
           currentUser: req.session.currentUser
         })
       })
@@ -176,9 +176,9 @@ router.put('/:id', (req,res)=>{
     User.findOne({ 'projects._id' : req.params.id }, (err, foundUser)=>{
       foundUser.projects.id(req.params.id).remove();
       foundUser.projects.push(updatedModel);
-      console.log(foundUser.projects)
       foundUser.save((err, data)=>{
-        res.redirect('/portfolio/'+req.params.id)
+        req.session.currentUser = data
+        res.redirect('/portfolio/'+ req.params.id)
       })
     })
   })

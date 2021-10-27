@@ -10,13 +10,13 @@
     <h1>application Information</h1>
       <%JSON.stringify(application)%>
     <h2> Name: <%=application.position%></h2>
-    <h2> Date: <%application.date%></h2>
+    <!-- <h2> Date: <%application.date%></h2> -->
     <div class="image">
       <img class="imgs" src="<%=application.companyImage%>"></img>
     </div>
     <br/>
     <p>Status: <%=application.status%></p><br/>
-    <a target="_blank" href="<%=application.applicationLink%>">
+    <a class="position" target="_blank" href="<%=application.applicationLink%>">
       <%=application.position %>
     </a>
 
@@ -26,7 +26,7 @@
        <% if (currentUser) { %>
       <a class="editbutton" href="/portfolio/applications/<%=application.id%>/edit"> <button class="editanddelete">Edit</button></a>
       <form action="/portfolio/applications/<%=application.id%>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE"/>
+        <input class="delete" type="submit" value="DELETE"/>
       <% } %>
     </nav>
 
@@ -47,11 +47,6 @@
       text-align: center
     }
     .lowNav{
-     text-align: center;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
     }
     h1{
       color: #422894;
