@@ -12,15 +12,15 @@
     </nav>
     <h1 class="projTitle">My Projects</h1>
     <div class="text">
-    <%JSON.stringify(projectList)%>
+    <%JSON.stringify(currentUser.projects)%>
       <br/>
-        <% for(let i=0; i< projectList.length; i++){ %>
-          <a class="cardLink" href="/portfolio/<%=projectList[i].id%>">
+        <% for(let i=0; i< currentUser.projects.length; i++){ %>
+          <a class="cardLink" href="/portfolio/<%=currentUser.projects[i]._id%>">
             <div class="card">
-              <img class="images" src="<%=projectList[i].previewImage%>"></img><br/>
+              <img class="images" src="<%=currentUser.projects[i].previewImage%>"></img><br/>
               <div class="name">
               <h3 class="nameTitle">
-                <%=projectList[i].projectName %>
+                <%=currentUser.projects[i].projectName %>
               </h3>
               </div>
             </div>

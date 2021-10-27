@@ -71,29 +71,50 @@ router.get('/applications/:id/edit', (req,res) =>{
 
 //DELETE
 router.delete('/:id', (req,res) => {
-  Portfolio.findByIdAndRemove(req.params.id, (err, data) =>{
-    res.redirect('/portfolio')
+  User.findById(req.session.currentUser._id, (err, foundUser)=>{
+    Portfolio.findByIdAndRemove(req.params.id, (err, data) =>{
+      foundUser.projects.id(req.params.id).remove();
+      foundUser.save((err,data)=>{
+        req.session.currentUser = data
+        res.redirect('/portfolio')
+      })
+    })
   })
 })
 
 //POST
-router.post('/', (req,res)=> { //wha's the use of the scond parameter here?
-  Portfolio.create(req.body, (error, createdPortfolio) => {
-    res.redirect('/portfolio')
+router.post('/', (req,res)=> {
+  User.findById(req.session.currentUser._id, (err, foundUser)=>{
+    console.log('PLACEMARKER')
+    console.log(foundUser)
+    Portfolio.create(req.body, (error, createdPortfolio) => {
+      foundUser.projects.push(createdPortfolio)
+      foundUser.save((err,data)=>{
+        console.log(data)
+        console.log('wow')
+        console.log(foundUser)
+        req.session.currentUser = data
+        res.redirect('/portfolio')
+      })
+    })
   })
 })
 
 
 //INDEX ROUTE
 router.get('/', (req, res) => {
-  User.findById(req.params.id, (err, foundUser)=>{
-    Portfolio.find({}, (error, allProjects) => {
-      res.render('index.ejs', {
-        projectList: allProjects,
-        currentUser: req.session.currentUser
+  if (req.session.currentUser) {
+    User.findById(req.session.currentUser._id, (err, foundUser)=>{
+      Portfolio.find({}, (error, allProjects) => {
+        res.render('index.ejs', {
+          projectList: allProjects,
+          currentUser: req.session.currentUser
+        })
       })
     })
-  })
+  } else {
+    res.redirect('/sessions/new')
+  }
 });
 
 //CREATE
@@ -108,8 +129,10 @@ router.get('/new', (req,res) => {
 
 //PUT
 router.put('/:id', (req,res)=>{
-  Portfolio.findByIdAndUpdate(req.params.id, req.body, (err,updatedModel)=>{
-    res.redirect('/portfolio')
+  User.findById(req.session.currentUser._id, (err, foundUser)=>{
+    Portfolio.findByIdAndUpdate(req.params.id, req.body, (err,updatedModel)=>{
+      res.redirect('/portfolio/'+req.params.id)
+    })
   })
 })
 
@@ -127,10 +150,13 @@ router.get('/:id', (req,res) => {
 
 //Edit
 router.get('/:id/edit', (req,res) =>{
-  Portfolio.findById(req.params.id, (err, foundProject) => {
-    res.render('edit.ejs', {
-      project: foundProject,
-      currentUser: req.session.currentUser
+  User.findById(req.session.currentUser._id, (err, foundUser)=>{
+    Portfolio.findById(req.params.id, (err, foundProject) => {
+      console.log(req.session.currentUser.projects)
+      res.render('edit.ejs', {
+        project: foundProject,
+        currentUser: req.session.currentUser
+      })
     })
   })
 })

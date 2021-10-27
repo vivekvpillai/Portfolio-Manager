@@ -1,13 +1,12 @@
 <a href="/portfolio" class="brand-logo left">Portfolio Manager</a>
  <ul class="right">
-   <a href="/portfolio/new">Create a new project</a>
  <% if (currentUser) { %>
     <h1>Welcome <%=currentUser.username%></h1>
-    <li>
+    <p>
       <form action="/sessions?_method=DELETE" method="POST">
         <input type="Submit" value="Log Out" />
       </form>
-    </li>
+    </p>
  <% } else { %>
    <div class="login">
    <a href="/users/new"><button>Sign Up</button></a><br/>

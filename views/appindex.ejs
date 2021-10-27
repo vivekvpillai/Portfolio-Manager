@@ -8,14 +8,14 @@
   <body>
     <h1>Applications Page</h1>
     <div class="text">
-    <%JSON.stringify(applicationList)%>
+    <%JSON.stringify(currentUser.applications)%>
       <br/>
-        <% for(let i=0; i< applicationList.length; i++){ %>
+        <% for(let i=0; i< currentUser.applications.length; i++){ %>
             <div class="card">
-              <img class="images" src="<%=applicationList[i].companyImage%>"></img><br/>
+              <img class="images" src="<%=currentUser.applications[i].companyImage%>"></img><br/>
               <div class="name">
-              <a class="nameLink" href="/portfolio/applications/<%=applicationList[i].id%>">
-                <%=applicationList[i].position %>
+              <a class="nameLink" href="/portfolio/applications/<%=currentUser.applications[i].id%>">
+                <%=currentUser.applications[i].position %>
               </a>
               </div>
             </div>

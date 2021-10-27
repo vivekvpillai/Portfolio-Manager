@@ -26,16 +26,14 @@ h1{
   text-align: center;
   font-weight: bolder;
 }
-img{
-  transform: scale(0.8)
-}
-
 .text {
-      display: flex; flex-wrap: wrap; gap: 10px
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px
     }
 .images{
-      max-width: 550px;
-      max-height: 650px;
+      max-width: 350px;
+      max-height: 300px;
     }
 .card{
       border: 1px solid black;
@@ -62,6 +60,7 @@ button{
  font-family: 'Ultra', serif;
  font-size: 30px;
  text-decoration: none;
+ text-align: center
 }
 .cardLink{
   text-decoration: none;
