@@ -9,32 +9,62 @@ const User = require('../models/users.js')
 /////////////////APPLICATIONS//////////////
 //Application Data POST
 router.post('/applications', (req,res)=> { //wha's the use of the scond parameter here?
-  Application.create(req.body, (error, createdApplication) => {
-    res.redirect('/portfolio/applications')
+  User.findById(req.session.currentUser._id, (err, foundUser)=>{
+    Application.create(req.body, (error, createdApplication) => {
+      foundUser.applications.push(createdApplication)
+      foundUser.save((err,data)=>{
+        req.session.currentUser = data
+        res.redirect('/portfolio/applications')
+      })
+    })
   })
 })
 
 //Application Data Index
 router.get('/applications', (req, res) => {
-  Application.find({}, (error, allApplications) => {
-    res.render('appindex.ejs', {
-      applicationList: allApplications,
-      currentUser: req.session.currentUser
+  User.findById(req.session.currentUser._id, (err, foundUser)=>{
+    Application.find({}, (error, allApplications) => {
+      res.render('appindex.ejs', {
+        applicationList: allApplications,
+        currentUser: req.session.currentUser
+      })
     })
   })
 });
 
 //Applications Create
 router.get('/applications/new', (req,res) => {
-  res.render('appnew.ejs', {
-   currentUser: req.session.currentUser
- })
+  User.findById(req.session.currentUser._id, (err, foundUser)=>{
+    res.render('appnew.ejs', {
+     currentUser: req.session.currentUser
+    })
+  })
+})
+
+//UPDATE
+router.put('/applications/:id', (req,res)=>{
+  Application.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err,updatedModel)=>{
+    User.findOne({ 'applications._id' : req.params.id }, (err, foundUser)=>{
+      foundUser.applications.id(req.params.id).remove();
+      foundUser.applications.push(updatedModel);
+      console.log(foundUser.applications)
+      foundUser.save((err, data)=>{
+        res.redirect('/portfolio/applications/'+req.params.id)
+      })
+    })
+  })
 })
 
 //Applications delete
 router.delete('/applications/:id', (req,res) => {
-  Application.findByIdAndRemove(req.params.id, (err, data) =>{
-    res.redirect('/portfolio/applications')
+  User.findById(req.session.currentUser._id, (err, foundUser)=>{
+    Application.findByIdAndRemove(req.params.id, (err, data) =>{
+      foundUser.applications.id(req.params.id).remove();
+      foundUser.save((err,data)=>{
+        req.session.currentUser = data
+        res.redirect('/portfolio/applications')
+      })
+    })
   })
 })
 
@@ -127,14 +157,6 @@ router.get('/new', (req,res) => {
 })
 
 
-//PUT
-router.put('/:id', (req,res)=>{
-  User.findById(req.session.currentUser._id, (err, foundUser)=>{
-    Portfolio.findByIdAndUpdate(req.params.id, req.body, (err,updatedModel)=>{
-      res.redirect('/portfolio/'+req.params.id)
-    })
-  })
-})
 
 //SHOW
 router.get('/:id', (req,res) => {
@@ -143,6 +165,20 @@ router.get('/:id', (req,res) => {
       res.render('show.ejs', {
         project: foundProjects,
         currentUser: req.session.currentUser
+      })
+    })
+  })
+})
+
+//UPDATE
+router.put('/:id', (req,res)=>{
+  Portfolio.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err,updatedModel)=>{
+    User.findOne({ 'projects._id' : req.params.id }, (err, foundUser)=>{
+      foundUser.projects.id(req.params.id).remove();
+      foundUser.projects.push(updatedModel);
+      console.log(foundUser.projects)
+      foundUser.save((err, data)=>{
+        res.redirect('/portfolio/'+req.params.id)
       })
     })
   })

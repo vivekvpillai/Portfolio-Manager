@@ -14,7 +14,7 @@
             <div class="card">
               <img class="images" src="<%=currentUser.applications[i].companyImage%>"></img><br/>
               <div class="name">
-              <a class="nameLink" href="/portfolio/applications/<%=currentUser.applications[i].id%>">
+              <a class="nameLink" href="/portfolio/applications/<%=currentUser.applications[i]._id%>">
                 <%=currentUser.applications[i].position %>
               </a>
               </div>
@@ -26,5 +26,81 @@
     <nav>
       <a class="new" href="/portfolio/applications/new">Create a new application</a> <br/>
       <a class="new" href="/portfolio">Back to Portfolio Manager</a>
+
+
+    <style>
+    body{
+      font-family: 'Libre Baskerville', serif;
+    }
+    nav{
+      background-color: #422894;
+      color: white;
+    }
+    nav a{
+      color: white;
+      text-align: right;
+    }
+    nav h1{
+      color: white;
+      text-align: right;
+    }
+    .lowNav{
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+    }
+    h1{
+      color: #422894;
+      font-family: 'Libre Baskerville', serif;
+      text-align: center;
+      font-weight: bolder;
+    }
+    .text {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px
+        }
+    .images{
+          max-width: 350px;
+          max-height: 300px;
+        }
+    .card{
+          border: 1px solid black;
+          border-radius: 25px;
+          padding: 20px;
+        }
+    .nameLink{
+      font-family: 'Libre Baskerville', serif;
+    }
+    .card:hover{
+          box-shadow: 2px 2px
+        }
+    button{
+      background-color: #DFDAF1;
+      color: #422894;
+      font-family: 'Libre Baskerville', serif;
+    }
+    .login{
+      text-align: right
+    }
+    .brand-logo{
+     background-color: #DFDAF1;
+     color: #422894;
+     font-family: 'Ultra', serif;
+     font-size: 30px;
+     text-decoration: none;
+     text-align: center
+    }
+    .cardLink{
+      text-decoration: none;
+      text-align: center
+    }
+    .projTitle{
+      font-weight: bold
+    }
+
+    </style>
   </body>
 </html>

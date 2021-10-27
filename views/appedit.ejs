@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <%- include ('../partials/fonts.ejs') %>
   </head>
   <body>
     <h1>Edit Page</h1>
-    <form action="/applications/<%=application.id%>?_method=PUT" method="POST">
+    <form action="/portfolio/applications/<%=application.id%>?_method=PUT" method="POST">
       Position: <input type="text" name="position" value="<%=application.position%>"/><br/>
       Date: <input type="text" name="date" value="<%=application.date%>" /><br/>
       Company Image: <input type="text" name="companyImage" value="<%=application.companyImage%>" /><br/>
@@ -15,5 +16,96 @@
       <br/>
       <input class="submission" type="submit" value="Submit Changes" />
     </form>
+
+    <style>
+    body{
+      font-family: 'Libre Baskerville', serif;
+    }
+    nav{
+      background-color: #422894;
+      color: white;
+    }
+    nav a{
+      color: white;
+      text-align: center;
+    }
+    nav h1{
+      color: white;
+      text-align: center
+    }
+    .lowNav{
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+    }
+    h1{
+      color: #422894;
+      font-family: 'Libre Baskerville', serif;
+      text-align: center;
+      font-weight: bolder;
+    }
+    h2{
+      text-align: center;
+    }
+    p{
+      text-align: center;
+    }
+    .text {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px
+        }
+    .images{
+          max-width: 350px;
+          max-height: 300px;
+        }
+    .card{
+          border: 1px solid black;
+          border-radius: 25px;
+          padding: 20px;
+        }
+    .nameLink{
+      font-family: 'Libre Baskerville', serif;
+    }
+    .card:hover{
+          box-shadow: 2px 2px
+        }
+    button{
+      background-color: #DFDAF1;
+      color: #422894;
+      font-family: 'Libre Baskerville', serif;
+    }
+    .delete{
+      background-color: #DFDAF1;
+      color: #422894;
+      font-family: 'Libre Baskerville', serif;
+    }
+    .login{
+      text-align: right
+    }
+    .brand-logo{
+     background-color: #DFDAF1;
+     color: #422894;
+     font-family: 'Ultra', serif;
+     font-size: 30px;
+     text-decoration: none;
+     text-align: center
+    }
+    .cardLink{
+      text-decoration: none;
+      text-align: center
+    }
+    .projTitle{
+      font-weight: bold
+    }
+    .submission{
+      background-color: #DFDAF1;
+      color: #422894;
+      font-family: 'Libre Baskerville', serif;
+    }
+    </style>
+
   </body>
 </html>

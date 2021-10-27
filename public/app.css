@@ -12,6 +12,7 @@ nav a{
 nav h1{
   color: white;
   text-align: right;
+  margin-right: 10px
 }
 .lowNav{
  text-align: center;
@@ -55,10 +56,10 @@ button{
   text-align: right
 }
 .brand-logo{
- background-color: #DFDAF1;
- color: #422894;
+ color: #DFDAF1;
+ margin-left: 8px;
  font-family: 'Ultra', serif;
- font-size: 30px;
+ font-size: 50px;
  text-decoration: none;
  text-align: center
 }
@@ -68,4 +69,11 @@ button{
 }
 .projTitle{
   font-weight: bold
+}
+.logout{
+  background-color: #DFDAF1;
+  color: #422894;
+  font-family: 'Libre Baskerville', serif;
+  margin-left: 92.7%;
+  margin-bottom: 15px
 }

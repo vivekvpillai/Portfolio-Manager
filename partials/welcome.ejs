@@ -4,7 +4,7 @@
     <h1>Welcome <%=currentUser.username%></h1>
     <p>
       <form action="/sessions?_method=DELETE" method="POST">
-        <input type="Submit" value="Log Out" />
+        <input class="logout" type="Submit" value="Log Out" />
       </form>
     </p>
  <% } else { %>
