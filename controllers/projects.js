@@ -137,6 +137,7 @@ router.get('/', (req, res) => {
   if (req.session.currentUser) {
     User.findById(req.session.currentUser._id, (err, foundUser)=>{ //Sam taught me how to use req.session.currentUser._id for the one-to-many, which I used through most routes in this controller to allow me to access the user logged in.
       Portfolio.find({}, (error, allProjects) => {
+        console.log(req.session.currentUser)
         res.render('index.ejs', {
           currentUser: req.session.currentUser
         })
