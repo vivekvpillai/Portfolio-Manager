@@ -25,7 +25,7 @@ The User will be able to login, then add and access their projects with a show, 
 ![image](https://user-images.githubusercontent.com/90585261/140616022-eb8b3501-3322-4c1b-94ba-a4bed05db7e8.png)
 
 The user will be able to enter an application page
-![image](https://user-images.githubusercontent.com/90585261/140616040-a09b7ce4-f590-4b3c-a061-de7e0abb6699.png)
+![image](https://user-images.githubusercontent.com/90585261/140616205-2b871bb4-fc1f-44e0-a12d-0b06c5792f11.png)
 
 The user will also be able to repeat the previous functionalities on the application page. 
 ![image](https://user-images.githubusercontent.com/90585261/140616117-c2e962f5-632c-4145-b57f-7dc0134166e9.png)
