@@ -33,5 +33,5 @@ The user will also be able to repeat the previous functionalities on the applica
 
 
 
-The link to the app is: https://young-mountain-68772.herokuapp.com/portfolio
+The link to the application: https://young-mountain-68772.herokuapp.com/portfolio
 
