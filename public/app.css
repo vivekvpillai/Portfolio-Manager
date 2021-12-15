@@ -30,7 +30,10 @@ h1{
 .text {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px
+      gap: 10px;
+      margin-left: 1vh;
+      margin-right: 1vh
+
     }
 .images{
       max-width: 40vh;
